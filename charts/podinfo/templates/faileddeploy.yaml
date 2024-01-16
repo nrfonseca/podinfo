@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: rollback-
+  annotations:
+    argocd.argoproj.io/hook: SyncFail
+spec:
+  template:
+    spec:
+      containers:
+      - name: nats
+        image: nats:latest
+        command: [sh, -c]
+        args: 
+          - |
+            az login --identity -u /subscriptions/527aaabd-be54-4ee8-ba6d-5f9068011634/resourceGroups/MC_SdlcPlatformStage_sdlc-galop-poc-akuity-lab-01_westeurope/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sdlc-galop-poc-akuity-lab-01-agentpool
+            az acr repository delete -n edenstage --repository edenstage.azurecr.io/helm/poc-akuity/dev/{{ .Chart.Name }} --tag {{ .Chart.Version }}
+      restartPolicy: Never
+  backoffLimit: 4

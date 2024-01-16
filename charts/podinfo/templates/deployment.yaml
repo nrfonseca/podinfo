@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   name: {{ template "podinfo.fullname" . }}
   labels:
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
     {{- include "podinfo.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.hpa.enabled }}

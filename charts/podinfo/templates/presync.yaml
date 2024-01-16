@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: validate-
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+spec:
+  template:
+    spec:
+      containers:
+      - name: validatesignature
+        image: nats:latest
+        command: [sh, -c]
+        args: 
+          - |
+            echo "Validating signatures"
+      restartPolicy: Never
+  backoffLimit: 4
