@@ -15,4 +15,4 @@ spec:
           - |
             echo "Running entry tests"
       restartPolicy: Never
-  backoffLimit: 4
+  backoffLimit: 1

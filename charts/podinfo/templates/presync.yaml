@@ -13,6 +13,6 @@ spec:
         command: [sh, -c]
         args: 
           - |
-            echosss "Validating signatures"
+            echo "Validating signatures"
       restartPolicy: Never
-  backoffLimit: 4
+  backoffLimit: 1
