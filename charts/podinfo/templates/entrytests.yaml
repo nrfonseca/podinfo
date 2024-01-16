@@ -8,8 +8,8 @@ spec:
   template:
     spec:
       containers:
-      - name: nats
-        image: nats:latest
+      - name: entrytests
+        image: mcr.microsoft.com/azure-cli:latest
         command: [sh, -c]
         args: 
           - |
