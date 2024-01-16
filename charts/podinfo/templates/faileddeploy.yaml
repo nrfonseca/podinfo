@@ -15,6 +15,6 @@ spec:
           - |
             echo {{ .Chart.Name }}
             az login --identity -u /subscriptions/527aaabd-be54-4ee8-ba6d-5f9068011634/resourceGroups/MC_SdlcPlatformStage_sdlc-galop-poc-akuity-lab-01_westeurope/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sdlc-galop-poc-akuity-lab-01-agentpool
-            az acr repository delete -n edenstage --image helm/poc-akuity/dev/{{ .Chart.Name }}:{{ .Chart.Version }}
+            az acr repository delete -n edenstage --image helm/poc-akuity/dev/{{ .Chart.Name }}:{{ .Chart.Version }} -y
       restartPolicy: Never
   backoffLimit: 4
